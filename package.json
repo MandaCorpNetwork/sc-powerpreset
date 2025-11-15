@@ -1,0 +1,23 @@
+{
+  "name": "@mandacorp/sc-powerpreset",
+  "version": "0.0.1",
+  "description": "A Power Preset utility for StarCitizen",
+  "main": "dist/index.js",
+  "module": "dist/index.mjs",
+  "types": "dist/index.d.ts",
+  "directories": {
+    "test": "test"
+  },
+  "scripts": {
+    "build": "tsup src/index.ts --format cjs,esm --dts"
+  },
+  "author": "Ethan Snow",
+  "license": "MIT",
+  "devDependencies": {
+    "@changesets/cli": "^2.29.7",
+    "@types/node": "24.10.1",
+    "tsup": "8.5.1",
+    "typescript": "5.9.3"
+  },
+  "packageManager": "yarn@4.11.0"
+}
