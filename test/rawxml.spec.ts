@@ -3,6 +3,8 @@ import { describe, test, expect } from 'vitest';
 import { PowerProfileBuilder, HardpointType } from '../src';
 const preset1 = readFileSync(__dirname + '/data/NewPreset_1.powerpreset');
 const preset2 = readFileSync(__dirname + '/data/NewPreset_2.powerpreset');
+const preset3 = readFileSync(__dirname + '/data/NewPreset_3.powerpreset');
+const preset4 = readFileSync(__dirname + '/data/NewPreset_4.powerpreset');
 const os = require('node:os');
 
 const platform = os.platform();
@@ -17,6 +19,16 @@ describe('Read raw XML data', () => {
     const decoder = new TextDecoder();
     const powerpreset = new PowerProfileBuilder(preset2);
     expect(powerpreset.toFile(isWindows)).toEqual(decoder.decode(preset2));
+  });
+  test('Serialize Preset 3', () => {
+    const decoder = new TextDecoder();
+    const powerpreset = new PowerProfileBuilder(preset3);
+    expect(powerpreset.toFile(isWindows)).toEqual(decoder.decode(preset3));
+  });
+  test('Serialize Preset 4', () => {
+    const decoder = new TextDecoder();
+    const powerpreset = new PowerProfileBuilder(preset4);
+    expect(powerpreset.toFile(isWindows)).toEqual(decoder.decode(preset4));
   });
   test('Match Values', () => {
     const powerpreset = new PowerProfileBuilder(preset1);
