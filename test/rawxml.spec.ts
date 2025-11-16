@@ -8,11 +8,15 @@ const os = require('node:os');
 const platform = os.platform();
 const isWindows = platform === 'win32';
 describe('Read raw XML data', () => {
-  test('Serialize', () => {
+  test('Serialize Preset 1', () => {
     const decoder = new TextDecoder();
     const powerpreset = new PowerProfileBuilder(preset1);
-    // console.dir(powerpreset, { depth: 5 });
     expect(powerpreset.toFile(isWindows)).toEqual(decoder.decode(preset1));
+  });
+  test('Serialize Preset 2', () => {
+    const decoder = new TextDecoder();
+    const powerpreset = new PowerProfileBuilder(preset2);
+    expect(powerpreset.toFile(isWindows)).toEqual(decoder.decode(preset2));
   });
   test('Match Values', () => {
     const powerpreset = new PowerProfileBuilder(preset1);
