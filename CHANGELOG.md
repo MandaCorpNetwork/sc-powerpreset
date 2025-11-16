@@ -1,5 +1,11 @@
 # @mandacorp/sc-powerpreset
 
+## 0.2.1
+
+### Patch Changes
+
+- b7216fb: Add support for left and right hardpoints
+
 ## 0.2.0
 
 ### Minor Changes
