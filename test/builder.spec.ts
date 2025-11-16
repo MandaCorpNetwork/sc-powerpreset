@@ -9,7 +9,10 @@ import {
 } from '../src/';
 const preset1 = readFileSync(__dirname + '/data/NewPreset_1.powerpreset');
 const preset2 = readFileSync(__dirname + '/data/NewPreset_2.powerpreset');
+const os = require('node:os');
 
+const platform = os.platform();
+const isWindows = platform === 'win32';
 describe('Build a Preset', () => {
   test('Match Values 1', () => {
     const decoder = new TextDecoder();
@@ -46,7 +49,7 @@ describe('Build a Preset', () => {
           ])
       );
 
-    expect(generatedPreset.toFile()).toEqual(powerpreset);
+    expect(generatedPreset.toFile(isWindows)).toEqual(powerpreset);
   });
   test('Match Values 2', () => {
     const decoder = new TextDecoder();
@@ -78,6 +81,6 @@ describe('Build a Preset', () => {
               .setOnline(true),
           ])
       );
-    expect(generatedPreset.toFile()).toEqual(powerpreset);
+    expect(generatedPreset.toFile(isWindows)).toEqual(powerpreset);
   });
 });

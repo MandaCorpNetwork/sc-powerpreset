@@ -71,7 +71,7 @@ export class PowerProfileBuilder {
       },
     };
   }
-  toFile() {
+  toFile(windows = true) {
     return this.#builder
       .build({
         SaveGame: {
@@ -81,6 +81,6 @@ export class PowerProfileBuilder {
           },
         },
       })
-      .replaceAll('\n', '\r\n');
+      .replaceAll('\n', windows ? '\r\n' : '\n');
   }
 }
