@@ -29,7 +29,7 @@ export class PresetData {
   }
 
   public setSystem(
-    key: SystemType | System[],
+    key: SystemType | Array<System | ((builder: System) => System)>,
     value?:
       | System
       | ConstructorParameters<typeof System>[0]
@@ -40,7 +40,7 @@ export class PresetData {
     }
     if (Array.isArray(key)) {
       for (const sys of key) {
-        this.setSystem(sys.id, sys);
+        this.setSystem((sys as System)?.id ?? sys, sys);
       }
       return this;
     }
@@ -49,7 +49,7 @@ export class PresetData {
   }
 
   public setHardpoint(
-    key: HardpointType | Hardpoint[],
+    key: HardpointType | Array<Hardpoint | ((builder: Hardpoint) => Hardpoint)>,
     value?:
       | Hardpoint
       | ConstructorParameters<typeof Hardpoint>[0]
@@ -60,7 +60,7 @@ export class PresetData {
     }
     if (Array.isArray(key)) {
       for (const hp of key) {
-        this.setHardpoint(hp.type, hp);
+        this.setHardpoint((hp as Hardpoint)?.type ?? hp, hp);
       }
       return this;
     }

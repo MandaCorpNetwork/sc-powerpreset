@@ -55,27 +55,27 @@ const preset = new PowerProfileBuilder()
       .setData((data) =>
         data
           .setSystem([
-            new System()
+            (sys) => sys
               .setType(SystemType.THRUSTER)
               .setPips(3)
               .setOnline(true),
-            new System().setType(SystemType.SHIELD).setPips(5).setOnline(false),
-            new System()
+            (sys) => sys.setType(SystemType.SHIELD).setPips(5).setOnline(false),
+            (sys) => sys
               .setType(SystemType.TRACTOR_BEAM)
               .setPips(2)
               .setOnline(false),
             new System().setType(SystemType.WEAPON).setPips(1).setOnline(true),
           ])
           .setHardpoint([
-            new Hardpoint()
+            (hp) => hp
               .setType(HardpointType.COOLER)
               .setPips(3)
               .setOnline(true),
-            new Hardpoint()
+            (hp) => hp
               .setType(HardpointType.LIFE_SUPPORT)
               .setPips(2)
               .setOnline(true),
-            new Hardpoint()
+            (hp) => hp
               .setType(HardpointType.QUANTUM_DRIVE)
               .setPips(0)
               .setOnline(false),
