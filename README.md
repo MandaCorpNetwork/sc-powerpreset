@@ -19,10 +19,9 @@ A small utility library for creating and serialising ship power presets used in 
 ## Features
 
 - **Builder pattern** for constructing complex preset data.
-- Supports both raw JSON objects and the native `PresetData` class.
-- Converts preset data to/from the XML format used by Star Citizen.
+- Supports both raw powerpreset files and building files from scratch.
 - Simple API for adding systems and hardpoints.
-- Zero runtime dependencies – only `fast-xml-parser` is required.
+- Works in the Browser!
 
 ---
 
