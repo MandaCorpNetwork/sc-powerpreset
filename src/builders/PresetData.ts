@@ -47,6 +47,7 @@ export class PresetData {
     this.systems.set(key, value instanceof System ? value : new System(value));
     return this;
   }
+
   public setHardpoint(
     key: HardpointType | Hardpoint[],
     value?:
