@@ -2,28 +2,14 @@
  * Represents a hard‑point type on a ship.
  */
 export enum HardpointType {
-  /**
-   * Unknown or unspecified hard‑point.
-   */
   UNKNOWN = 'unknown',
-  /**
-   * Cooling system hard‑point.
-   */
   COOLER = 'hardpoint_cooler',
-  /**
-   * Life‑support system hard‑point.
-   */
+  COOLER_LEFT = 'hardpoint_cooler_left',
+  COOLER_RIGHT = 'hardpoint_cooler_right',
   LIFE_SUPPORT = 'hardpoint_life_support',
-  /**
-   * Power‑plant hard‑point.
-   */
   POWERPLANT = 'hardpoint_powerplant',
-  /**
-   * Quantum drive hard‑point.
-   */
+  POWERPLANT_LEFT = 'hardpoint_powerplant_left',
+  POWERPLANT_RIGHT = 'hardpoint_powerplant_right',
   QUANTUM_DRIVE = 'hardpoint_quantum_drive',
-  /**
-   * Radar hard‑point.
-   */
   RADAR = 'hardpoint_radar',
 }
