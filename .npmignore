@@ -8,3 +8,4 @@ vitest.**
 tsconfig.*
 .gitattributes
 .gitignore
+renovate.json
