@@ -29,6 +29,16 @@ export class PresetData {
   }
 
   public setSystem(
+    systems: Array<System | ((builder: System) => System)>
+  ): this;
+  public setSystem(
+    key: SystemType,
+    value?:
+      | System
+      | ConstructorParameters<typeof System>[0]
+      | ((builder: System) => System)
+  ): this;
+  public setSystem(
     key: SystemType | Array<System | ((builder: System) => System)>,
     value?:
       | System
@@ -48,6 +58,16 @@ export class PresetData {
     return this;
   }
 
+  public setHardpoint(
+    hardpoints: Array<Hardpoint | ((builder: Hardpoint) => Hardpoint)>
+  ): this;
+  public setHardpoint(
+    key: HardpointType,
+    value?:
+      | Hardpoint
+      | ConstructorParameters<typeof Hardpoint>[0]
+      | ((builder: Hardpoint) => Hardpoint)
+  ): this;
   public setHardpoint(
     key: HardpointType | Array<Hardpoint | ((builder: Hardpoint) => Hardpoint)>,
     value?:
