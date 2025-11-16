@@ -2,10 +2,9 @@ src
 .changeset
 .github
 node_modules
-.yarn
+.yarn**
 test
-vitest.config.test
+vitest.**
 tsconfig.*
 .gitattributes
 .gitignore
-
