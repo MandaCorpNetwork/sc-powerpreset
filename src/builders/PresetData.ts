@@ -3,10 +3,11 @@ import { Hardpoint } from './Hardpoint';
 import { HardpointType } from '../enum/HardpointType';
 import { System } from './System';
 import { SystemType } from '../enum/SystemType';
+import { ShipDataMap } from '../definitions/ShipDataMap';
 
-export class PresetData {
-  public systems: Map<SystemType, System> = new Map();
-  public hardpoints: Map<Hardpoint['type'], Hardpoint> = new Map();
+export class PresetData<T extends keyof ShipDataMap = keyof ShipDataMap> {
+  public systems: Map<SystemType, System<T>> = new Map();
+  public hardpoints: Map<Hardpoint<T>['type'], Hardpoint<T>> = new Map();
 
   constructor(data?: { m_poolTargets: []; m_entityTargets: [] }) {
     if (data == null) return;
@@ -29,64 +30,69 @@ export class PresetData {
   }
 
   public setSystem(
-    systems: Array<System | ((builder: System) => System)>
+    systems: Array<System<T> | ((builder: System<T>) => System<T>)>
   ): this;
   public setSystem(
     key: SystemType,
     value?:
-      | System
-      | ConstructorParameters<typeof System>[0]
-      | ((builder: System) => System)
+      | System<T>
+      | ConstructorParameters<typeof System<T>>[0]
+      | ((builder: System<T>) => System<T>)
   ): this;
   public setSystem(
-    key: SystemType | Array<System | ((builder: System) => System)>,
+    key: SystemType | Array<System<T> | ((builder: System<T>) => System<T>)>,
     value?:
-      | System
-      | ConstructorParameters<typeof System>[0]
-      | ((builder: System) => System)
-  ) {
+      | System<T>
+      | ConstructorParameters<typeof System<T>>[0]
+      | ((builder: System<T>) => System<T>)
+  ): this {
     if (typeof value === 'function') {
-      value = value(new System());
+      value = value(new System<T>());
     }
     if (Array.isArray(key)) {
       for (const sys of key) {
-        this.setSystem((sys as System)?.id ?? sys, sys);
+        this.setSystem(((sys as System<T>)?.id as any) ?? sys, sys);
       }
       return this;
     }
-    this.systems.set(key, value instanceof System ? value : new System(value));
+    this.systems.set(
+      key,
+      value instanceof System ? value : new System<T>(value)
+    );
     return this;
   }
 
   public setHardpoint(
-    hardpoints: Array<Hardpoint | ((builder: Hardpoint) => Hardpoint)>
+    hardpoints: Array<Hardpoint<T> | ((builder: Hardpoint<T>) => Hardpoint<T>)>
   ): this;
   public setHardpoint(
     key: HardpointType,
     value?:
       | Hardpoint
-      | ConstructorParameters<typeof Hardpoint>[0]
-      | ((builder: Hardpoint) => Hardpoint)
+      | ConstructorParameters<typeof Hardpoint<T>>[0]
+      | ((builder: Hardpoint<T>) => Hardpoint<T>)
   ): this;
   public setHardpoint(
-    key: HardpointType | Array<Hardpoint | ((builder: Hardpoint) => Hardpoint)>,
+    key:
+      | HardpointType
+      | Array<Hardpoint<T> | ((builder: Hardpoint<T>) => Hardpoint<T>)>,
     value?:
       | Hardpoint
-      | ConstructorParameters<typeof Hardpoint>[0]
-      | ((builder: Hardpoint) => Hardpoint)
+      | ConstructorParameters<typeof Hardpoint<T>>[0]
+      | ((builder: Hardpoint<T>) => Hardpoint<T>)
   ) {
     if (typeof value === 'function') {
-      value = value(new Hardpoint());
+      value = value(new Hardpoint<T>()) as any;
     }
     if (Array.isArray(key)) {
       for (const hp of key) {
-        this.setHardpoint((hp as Hardpoint)?.type ?? hp, hp);
+        this.setHardpoint(((hp as Hardpoint<T>)?.type as any) ?? hp, hp as any);
       }
       return this;
     }
     this.hardpoints.set(
-      key,
-      value instanceof Hardpoint ? value : new Hardpoint(value)
+      key as any,
+      value instanceof Hardpoint ? value : new Hardpoint<T>(value as any)
     );
     return this;
   }

@@ -7,8 +7,12 @@ import {
   System,
   SystemType,
 } from '../src/';
-const preset1 = readFileSync(__dirname + '/data/RSI_Polaris/NewPreset_1.powerpreset');
-const preset2 = readFileSync(__dirname + '/data/RSI_Polaris/NewPreset_2.powerpreset');
+const preset1 = readFileSync(
+  __dirname + '/data/RSI_Polaris/NewPreset_1.powerpreset'
+);
+const preset2 = readFileSync(
+  __dirname + '/data/RSI_Polaris/NewPreset_2.powerpreset'
+);
 const os = require('node:os');
 
 const platform = os.platform();

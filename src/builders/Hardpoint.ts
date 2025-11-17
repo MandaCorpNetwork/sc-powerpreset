@@ -1,21 +1,29 @@
+import { ShipDataMap, ShipKey } from '../definitions/ShipDataMap';
 import { HardpointType } from '../enum/HardpointType';
 import { Props } from './Props';
 
-export class Hardpoint {
-  public type: HardpointType = HardpointType.UNKNOWN;
+export class Hardpoint<
+  T extends string = keyof ShipDataMap,
+  HARDPOINT extends keyof ShipDataMap[ShipKey<T>]['components'] = keyof ShipDataMap[ShipKey<T>]['components']
+> {
+  public type: HARDPOINT = HardpointType.UNKNOWN as HARDPOINT;
   public props = new Props();
   constructor(data?: {
     first: HardpointType;
     second: { m_target: number; m_online: boolean };
   }) {
     if (data == null) return;
-    this.type = data.first;
+    this.type = data.first as HARDPOINT;
     this.props = new Props(data.second);
   }
 
-  setType(type: HardpointType) {
-    this.type = type;
-    return this;
+  /** This does NOT MUTATE, and will return a new class */
+  setType<C extends keyof ShipDataMap[ShipKey<T>]['components']>(
+    type: C
+  ): Hardpoint<T, C> {
+    const newBuilder = new Hardpoint<T, C>(this.toJSON() as any);
+    newBuilder.type = type;
+    return newBuilder;
   }
 
   setPips(pips: number) {
@@ -29,6 +37,6 @@ export class Hardpoint {
   }
 
   toJSON() {
-    return { first: this.type, second: this.props.toJSON() };
+    return { first: this.type as HardpointType, second: this.props.toJSON() };
   }
 }

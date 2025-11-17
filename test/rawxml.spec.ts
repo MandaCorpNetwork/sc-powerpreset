@@ -8,9 +8,12 @@ const preset2 = readFileSync(
   __dirname + '/data/RSI_Polaris/NewPreset_2.powerpreset'
 );
 const preset3 = readFileSync(
-  __dirname + '/data/ANVL_Paladin/NewPreset_1.powerpreset'
+  __dirname + '/data/RSI_Polaris/NewPreset_3.powerpreset'
 );
 const preset4 = readFileSync(
+  __dirname + '/data/ANVL_Paladin/NewPreset_1.powerpreset'
+);
+const preset5 = readFileSync(
   __dirname + '/data/RSI_Constellation_Taurus/NewPreset_1.powerpreset'
 );
 const os = require('node:os');
@@ -37,6 +40,11 @@ describe('Read raw XML data', () => {
     const decoder = new TextDecoder();
     const powerpreset = new PowerProfileBuilder(preset4);
     expect(powerpreset.toFile(isWindows)).toEqual(decoder.decode(preset4));
+  });
+  test('Serialize Preset 5', () => {
+    const decoder = new TextDecoder();
+    const powerpreset = new PowerProfileBuilder(preset5);
+    expect(powerpreset.toFile(isWindows)).toEqual(decoder.decode(preset5));
   });
   test('Match Values', () => {
     const powerpreset = new PowerProfileBuilder(preset1);

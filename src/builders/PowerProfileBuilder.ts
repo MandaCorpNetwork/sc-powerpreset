@@ -1,8 +1,9 @@
 import { XMLBuilder, XMLParser } from 'fast-xml-parser';
 import { PresetData } from './PresetData';
 import { IShipPowerPreset } from '../definitions/IShipPowerPreset';
+import { ShipDataMap, ShipKey } from '../definitions/ShipDataMap';
 
-export class PowerProfileBuilder {
+export class PowerProfileBuilder<T extends string = keyof ShipDataMap> {
   #parser: XMLParser = new XMLParser({ ignoreAttributes: false });
   #builder: XMLBuilder = new XMLBuilder({
     ignoreAttributes: false,
@@ -11,8 +12,8 @@ export class PowerProfileBuilder {
     indentBy: ' ',
   });
 
-  public ship: string = 'Unknown';
-  public data = new PresetData();
+  public ship: ShipKey<T> = 'unknown' as ShipKey<T>;
+  public data = new PresetData<ShipKey<T>>();
 
   constructor();
   constructor(fileRaw: string);
@@ -38,26 +39,29 @@ export class PowerProfileBuilder {
       };
     };
     const properties = rawXml.SaveGame.ShipPowerPreset;
-    this.ship = properties['@_Ship'];
+    this.ship = properties['@_Ship'] as ShipKey<T>;
     const rawJSON = JSON.parse(properties['@_PresetData']);
-    this.data = new PresetData(rawJSON);
+    this.data = new PresetData<ShipKey<T>>(rawJSON);
   }
 
-  setShip(ship_name: string) {
-    this.ship = ship_name;
-    return this;
+  /** This does NOT MUTATE, and will return a new class */
+  setShip<S extends string>(ship_name: S): PowerProfileBuilder<S> {
+    const newBuilder = new PowerProfileBuilder<S>(this.toFile());
+    newBuilder.ship = ship_name as ShipKey<S>;
+    return newBuilder;
   }
 
   setData(
     data:
-      | PresetData
+      | PresetData<ShipKey<T>>
       | ConstructorParameters<typeof PresetData>[0]
-      | ((builder: PresetData) => PresetData)
+      | ((builder: PresetData<ShipKey<T>>) => PresetData<ShipKey<T>>)
   ) {
     if (typeof data === 'function') {
       data = data(new PresetData());
     }
-    this.data = data instanceof PresetData ? data : new PresetData(data);
+    this.data =
+      data instanceof PresetData ? data : new PresetData<ShipKey<T>>(data);
     return this;
   }
 

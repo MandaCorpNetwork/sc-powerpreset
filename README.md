@@ -93,6 +93,22 @@ const existingXml = /* load XML string or Buffer */;
 const builder = new PowerProfileBuilder(existingXml);
 ```
 
+## Disabling Checks
+
+> [!CAUTION]
+> This tool will attempt to safeguard you against invalid tunings, such as adding components or systems that dont exist on a given ship, however as these things change during the development of the game, there may be a time you wish to disable these.
+> You might need to use this if a ship changes and we don't yet have an update out.
+
+This can be done by using a ship of `"unknown"`.
+
+```ts
+const myPreset = new PowerProfileBuilder().setName('DRAKE_Jalopy' as 'unknown').setData(...);
+```
+
+This will force disable all checking for valid components and let you enter anything. Note that this is the default behavior for Unknown ships.
+
+
+
 # Building Locally
 
 ## Building
