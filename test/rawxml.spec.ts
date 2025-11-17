@@ -1,10 +1,18 @@
 import { readFileSync } from 'node:fs';
 import { describe, test, expect } from 'vitest';
 import { PowerProfileBuilder, HardpointType } from '../src';
-const preset1 = readFileSync(__dirname + '/data/NewPreset_1.powerpreset');
-const preset2 = readFileSync(__dirname + '/data/NewPreset_2.powerpreset');
-const preset3 = readFileSync(__dirname + '/data/NewPreset_3.powerpreset');
-const preset4 = readFileSync(__dirname + '/data/NewPreset_4.powerpreset');
+const preset1 = readFileSync(
+  __dirname + '/data/RSI_Polaris/NewPreset_1.powerpreset'
+);
+const preset2 = readFileSync(
+  __dirname + '/data/RSI_Polaris/NewPreset_2.powerpreset'
+);
+const preset3 = readFileSync(
+  __dirname + '/data/ANVL_Paladin/NewPreset_1.powerpreset'
+);
+const preset4 = readFileSync(
+  __dirname + '/data/RSI_Constellation_Taurus/NewPreset_1.powerpreset'
+);
 const os = require('node:os');
 
 const platform = os.platform();
