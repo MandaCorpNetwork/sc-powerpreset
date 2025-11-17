@@ -1,5 +1,11 @@
 # @mandacorp/sc-powerpreset
 
+## 0.3.0
+
+### Minor Changes
+
+- 035f472: Add typeguarding
+
 ## 0.2.2
 
 ### Patch Changes
