@@ -1,5 +1,11 @@
 # @mandacorp/sc-powerpreset
 
+## 0.2.2
+
+### Patch Changes
+
+- 5e607de: Update Readme
+
 ## 0.2.1
 
 ### Patch Changes

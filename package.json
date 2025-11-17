@@ -1,6 +1,6 @@
 {
   "name": "@mandacorp/sc-powerpreset",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "A Power Preset utility for StarCitizen",
   "main": "dist/index.js",
   "module": "dist/index.mjs",
