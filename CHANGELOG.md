@@ -1,5 +1,11 @@
 # @mandacorp/sc-powerpreset
 
+## 0.4.0
+
+### Minor Changes
+
+- 2c27e4f: Update system IDs
+
 ## 0.3.0
 
 ### Minor Changes
