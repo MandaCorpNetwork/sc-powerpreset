@@ -43,13 +43,10 @@ export interface ShipDataMap {
   };
   AEGS_Idris_M: {
     systems: {
-      [SystemType.THRUSTER]: true
-      [153]: true
-      [162]: true
-      [172]: true
-      [173]: true
-      [SystemType.WEAPON]: true
-      [184]: true
+      [SystemType.THRUSTER]: true;
+      [SystemType.SHIELD]: true;
+      [SystemType.TRACTOR_BEAM]:true
+      [SystemType.WEAPON]: true;
     };
     components: {
       [HardpointType.COOLER_LEFT]: true;
