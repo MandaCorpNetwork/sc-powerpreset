@@ -8,6 +8,8 @@ export enum HardpointType {
   COOLER_RIGHT = 'hardpoint_cooler_right',
   LIFE_SUPPORT = 'hardpoint_life_support',
   POWERPLANT = 'hardpoint_powerplant',
+  POWERPLANT_01 = 'hardpoint_powerplant_01',
+  POWERPLANT_02 = 'hardpoint_powerplant_02',
   POWERPLANT_LEFT = 'hardpoint_powerplant_left',
   POWERPLANT_RIGHT = 'hardpoint_powerplant_right',
   QUANTUM_DRIVE = 'hardpoint_quantum_drive',

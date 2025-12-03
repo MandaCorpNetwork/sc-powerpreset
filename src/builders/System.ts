@@ -59,13 +59,13 @@ export class System<
       default:
       case 0:
         return 'system_unknown';
-      case 78:
+      case SystemType.THRUSTER:
         return 'system_thruster';
-      case 182:
+      case SystemType.WEAPON:
         return 'system_weapon';
-      case 161:
+      case SystemType.SHIELD:
         return 'system_shield';
-      case 172:
+      case SystemType.TRACTOR_BEAM:
         return 'system_tractor_beam';
     }
   }

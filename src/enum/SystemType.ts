@@ -1,7 +1,7 @@
 export enum SystemType {
   UNKNOWN = 0,
-  THRUSTER = 78,
-  WEAPON = 182,
-  TRACTOR_BEAM = 172,
-  SHIELD = 161,
+  THRUSTER = 79,
+  WEAPON = 183,
+  TRACTOR_BEAM = 173,
+  SHIELD = 162,
 }
