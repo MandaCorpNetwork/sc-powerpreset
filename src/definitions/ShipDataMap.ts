@@ -24,13 +24,9 @@ export interface ShipDataMap {
   };
   RSI_Polaris: {
     systems: {
-      /** Thruster */
       [SystemType.THRUSTER]: true;
-      /** Shield */
       [SystemType.SHIELD]: true;
-      /** Tractor */
-      [SystemType.TRACTOR_BEAM]:true
-      /** Weapon */
+      [SystemType.TRACTOR_BEAM]: true;
       [SystemType.WEAPON]: true;
     };
     components: {
@@ -45,7 +41,7 @@ export interface ShipDataMap {
     systems: {
       [SystemType.THRUSTER]: true;
       [SystemType.SHIELD]: true;
-      [SystemType.TRACTOR_BEAM]:true
+      [SystemType.TRACTOR_BEAM]: true;
       [SystemType.WEAPON]: true;
     };
     components: {
@@ -60,13 +56,13 @@ export interface ShipDataMap {
   };
   AEGS_Retaliator: {
     systems: {
-      [SystemType.THRUSTER]: true
-      [153]: true
-      [162]: true
-      [172]: true
-      [173]: true
-      [SystemType.WEAPON]: true
-      [184]: true
+      [SystemType.THRUSTER]: true;
+      [153]: true;
+      [162]: true;
+      [172]: true;
+      [173]: true;
+      [SystemType.WEAPON]: true;
+      [184]: true;
     };
     components: {
       [HardpointType.COOLER_LEFT]: true;
